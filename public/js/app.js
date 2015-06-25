@@ -1,6 +1,6 @@
 'use strict';
 
-var exampleSocket = new WebSocket("ws://" + location.host + ":"  location.port + "/ws/");
+var exampleSocket = new WebSocket("ws://" + location.host + ":" + location.port + "/ws/");
 
  
 
