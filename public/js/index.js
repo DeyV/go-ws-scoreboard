@@ -7,7 +7,6 @@ var exampleSocket = new WebSocket("ws://" + location.host + "/ws/");
 // Send text to all users through the server
 function sendText(val) {
   // Construct a msg object containing the data the server needs to process the message from the chat client.
-  
   var msg = {
     Type: "message",
     Text: val, 
@@ -23,35 +22,30 @@ exampleSocket.onopen = function (event) {
 };
 
 exampleSocket.onmessage = function(event) {
-  var history = $("#historyBox");
+  var f = $("#chatbox");
   var text = "";
   var msg = JSON.parse(event.data);
   var time = new Date(msg.Date);
   var timeStr = time.toLocaleTimeString();
-
-  var wynik = $("#dashboardText")
   
   switch(msg.Type) {
   
     case "css":
-      wynik.css('color', msg.Text)
-
-      text = "<b><em>color</em> set to " + msg.Text  + " in at " + timeStr + "</b><br>";
+       $("#bodyMess").css('color', msg.Text)
+      text = "<b>css <em>color</em> set to " + msg.Text  + " in at " + timeStr + "</b><br>";
       break;
     case "message":
-      wynik.text(msg.Text )
-
-      text = "(" + timeStr + ") " + msg.Text + "<br>";
+      $("#bodyMess").text(msg.Text )
+      text = "(" + timeStr + ") <b>" + msg.Name + "</b>: " + msg.Text + "<br>";
       break;
     case "img":
-      wynik.css( 'background: url(' + msg.Text +'); ')
-
-      text = "<b>img set to " + msg.Text  + " in at " + timeStr + "</b><br>";
+      f.css( 'background: url(' + msg.Text +'); ')
+      text = "<b>img <em>" + msg.Name + "</em> set to " + msg.Text  + " in at " + timeStr + "</b><br>";
       break;
   }
   
   if (text.length) {
-     history.append( text ); 
+    f.append( text ); 
   }
 };
 

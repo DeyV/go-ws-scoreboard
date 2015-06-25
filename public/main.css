@@ -1,0 +1,48 @@
+
+body{
+	font-family: tahoma;
+}
+
+.dashboardBack{
+	background-color: blue; 
+	padding: 40px;
+}
+
+
+.dashboardText{
+	border: 1px solid white;
+	padding: 20px; 
+	margin: 10px;
+
+	width: 80%;  
+
+	font-size: 44px;
+	color: white;
+}
+
+.dashboardDate{ 
+	padding-left: 20px;
+	color: white;
+	font-size: 11px;
+}
+
+.history{
+	border: 1px solid black;
+	padding: 10px; 
+	margin: 10px;
+
+	font-size: 11px;
+}
+
+
+.historyBox{
+
+
+}
+
+
+.result{
+	margin-top: 20px;
+	padding: 20px;
+	background-color: gray;
+}

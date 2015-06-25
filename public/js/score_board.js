@@ -30,28 +30,30 @@ exampleSocket.onmessage = function(event) {
   var timeStr = time.toLocaleTimeString();
 
   var wynik = $("#dashboardText")
+  var wynikDate = $("#dashboardDate")
   
   switch(msg.Type) {
   
     case "css":
       wynik.css('color', msg.Text)
 
-      text = "<b><em>color</em> set to " + msg.Text  + " in at " + timeStr + "</b><br>";
+       text = "(" + timeStr + ") color set to:" + msg.Text + "<br>";
       break;
     case "message":
-      wynik.text(msg.Text )
+      wynik.text(msg.Text)
+      wynikDate.text(timeStr)
 
       text = "(" + timeStr + ") " + msg.Text + "<br>";
       break;
     case "img":
       wynik.css( 'background: url(' + msg.Text +'); ')
 
-      text = "<b>img set to " + msg.Text  + " in at " + timeStr + "</b><br>";
+       text = "(" + timeStr + ") background set to:" + msg.Text + "<br>";
       break;
   }
   
   if (text.length) {
-     history.append( text ); 
+     history.prepend( text ); 
   }
 };
 

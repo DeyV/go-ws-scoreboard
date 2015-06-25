@@ -22,6 +22,8 @@ func main() {
 	r.HandleFunc("/set", SetHandler)
 	r.HandleFunc("/css", CssHandler)
 
+	r.HandleFunc("/admin", AdminHandler)
+	r.HandleFunc("/sb", ScoreBoardHandler)
 	r.HandleFunc("/", HomeHandler)
 
 	r.Handle("/ws/", websocket.Handler(EchoHandler))
@@ -37,6 +39,24 @@ func main() {
 
 func HomeHandler(w http.ResponseWriter, req *http.Request) {
 	index, err := template.ParseFiles("templates/index.html")
+	if err != nil {
+		fmt.Fprint(w, err)
+	}
+
+	index.Execute(w, "Test")
+}
+
+func ScoreBoardHandler(w http.ResponseWriter, req *http.Request) {
+	index, err := template.ParseFiles("templates/score_board.html")
+	if err != nil {
+		fmt.Fprint(w, err)
+	}
+
+	index.Execute(w, "Test")
+}
+
+func AdminHandler(w http.ResponseWriter, req *http.Request) {
+	index, err := template.ParseFiles("templates/admin.html")
 	if err != nil {
 		fmt.Fprint(w, err)
 	}
