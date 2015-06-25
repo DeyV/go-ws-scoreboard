@@ -31,6 +31,7 @@ exampleSocket.onmessage = function(event) {
 
   var wynik = $("#dashboardText")
   var wynikDate = $("#dashboardDate")
+  var dashboardBack = $(".dashboardBack")
   
   switch(msg.Type) {
   
@@ -46,7 +47,7 @@ exampleSocket.onmessage = function(event) {
       text = "(" + timeStr + ") " + msg.Text + "<br>";
       break;
     case "img":
-       wynik.css( 'background-image', 'url("' + msg.Text +'")' );
+       dashboardBack.css( 'background-image', 'url("' + msg.Text +'")' );
 
        text = "(" + timeStr + ") background set to:" + msg.Text + "<br>";
       break;
